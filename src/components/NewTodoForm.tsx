@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-function NewTodoForm(props) {
+function NewTodoForm(props: { addTodo: Function }) {
   const [description, setDescription] = useState("");
   const [assigned, setAssigned] = useState("");
 
   const submitTodo = () => {
     if (description !== "" && assigned !== "") {
-      props.addToDo(description, assigned);
+      props.addTodo(description, assigned);
       setDescription("");
       setAssigned("");
     }
@@ -16,7 +16,7 @@ function NewTodoForm(props) {
     <div className="mt-5">
       <form>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             Assigned
           </label>
           <input
@@ -29,12 +29,11 @@ function NewTodoForm(props) {
           ></input>
         </div>
         <div className="mb-3">
-          <label for="" className="form-label">
+          <label htmlFor="" className="form-label">
             Description
           </label>
           <textarea
             rows={3}
-            cols=""
             className="form-control"
             required
             onChange={(e) => setDescription(e.target.value)}
